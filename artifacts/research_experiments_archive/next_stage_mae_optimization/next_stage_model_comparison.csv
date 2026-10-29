@@ -1,0 +1,8 @@
+metric,log_arima_100,current_autots_champion,best_experimental_candidate,delta_vs_autots_champion_ms,pct_change_vs_champion
+Validation Benchmark MAE (ms),63.42,50.57,50.57,0.0,0.00% (Tie / Parity)
+Validation Benchmark RMSE (ms),115.43,122.68,122.68,0.0,0.00%
+Primary 24h Test MAE (ms),70.73,58.0,58.0,0.0,0.00%
+Primary 24h Test RMSE (ms),127.95,135.73,135.73,0.0,0.00%
+"Multi-Week Pooled Test MAE (672h, ms)",59.95,47.11,47.11,0.0,0.00%
+"Multi-Week Pooled Test RMSE (672h, ms)",113.44,119.9,119.9,0.0,0.00%
+24h Window Test Win Rate (%),0.0,100.0,100.0,0.0,100% Win Rate

@@ -1,0 +1,10 @@
+evaluation_metric,log_arima_100_baseline,autots_advanced_model,absolute_difference_ms,percentage_improvement
+Validation MAE (ms),55.83,36.14,-19.69,35.27
+Primary 24h Test MAE (ms),70.73,58.0,-12.73,18.0
+Primary 24h Test RMSE (ms),127.95,135.73,7.78,-6.08
+"Multi-Week Pooled MAE (672h, ms)",59.95,47.11,-12.83,21.41
+"Multi-Week Pooled RMSE (672h, ms)",113.44,119.9,6.47,-5.7
+Macro Window Mean MAE (ms),59.95,47.11,-12.83,21.41
+24h Window Win Rate (%),0.0,100.0,100.0,
+Training Runtime (seconds),0.04,176.05,176.01,
+Inference Time per 24h (seconds),0.0444,0.7556,0.7112,

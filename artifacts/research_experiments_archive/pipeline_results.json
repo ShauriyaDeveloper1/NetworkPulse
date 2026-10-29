@@ -1,0 +1,243 @@
+{
+  "dataset_validation": {
+    "raw_shape": [
+      45289,
+      35
+    ],
+    "start_timestamp": "2019-11-01 00:00:00",
+    "end_timestamp": "2024-12-31 00:00:00",
+    "is_chronological_original": true,
+    "duplicate_timestamps": 0,
+    "is_hourly_regular": true,
+    "total_observations": 45289,
+    "target_stats": {
+      "count": 45289,
+      "mean": 100.02128552187065,
+      "std": 112.560687225245,
+      "min": 50.0,
+      "p25": 50.0,
+      "median": 50.0,
+      "p75": 50.0,
+      "p95": 400.0,
+      "p99": 480.0,
+      "max": 499.0,
+      "missing": 0,
+      "inf_count": 0,
+      "negative_count": 0,
+      "zero_count": 0
+    }
+  },
+  "split_summary": {
+    "total_observations": 45289,
+    "train_observations": 36231,
+    "test_observations": 9058,
+    "actual_train_ratio": 0.7999955839166244,
+    "actual_test_ratio": 0.20000441608337566,
+    "train_start": "2019-11-01 00:00:00",
+    "train_end": "2023-12-19 14:00:00",
+    "test_start": "2023-12-19 15:00:00",
+    "test_end": "2024-12-31 00:00:00",
+    "temporal_leakage_detected": false
+  },
+  "stationarity": {
+    "raw_adf": {
+      "test_statistic": -136.3510295547229,
+      "p_value": 0.0,
+      "lags_used": 1,
+      "n_obs": 36229,
+      "critical_values": {
+        "1%": -3.4305305118383336,
+        "5%": -2.8616197818570264,
+        "10%": -2.5668124653601967
+      },
+      "aic_at_best_lag": 444336.471233866,
+      "is_stationary_at_5pct": true,
+      "is_stationary_at_1pct": true,
+      "conclusion": "Reject null hypothesis (H0): Series is stationary."
+    },
+    "first_diff_adf": {
+      "test_statistic": -44.55671354148456,
+      "p_value": 0.0,
+      "lags_used": 53,
+      "n_obs": 36176,
+      "critical_values": {
+        "1%": -3.430530776317724,
+        "5%": -2.8616198987469463,
+        "10%": -2.5668125275776252
+      },
+      "aic_at_best_lag": 445053.9481487294,
+      "is_stationary_at_5pct": true,
+      "is_stationary_at_1pct": true,
+      "conclusion": "Reject null hypothesis (H0): Series is stationary."
+    },
+    "recommended_d": 0,
+    "rationale": "Raw series ADF test statistic (-136.3510) is less than the 1% critical value (-3.4305) with p-value=0.0000e+00. The null hypothesis of a unit root is rejected. Differencing d=0 is statistically justified, though d=1 can also be considered to ensure zero mean-shift risk."
+  },
+  "model_selection": {
+    "candidates": [
+      {
+        "order": "(0, 1, 1)",
+        "p": 0,
+        "d": 1,
+        "q": 1,
+        "aic": 445009.6270566768,
+        "bic": 445026.62234224455,
+        "log_likelihood": -222502.8135283384,
+        "converged": true
+      },
+      {
+        "order": "(1, 1, 1)",
+        "p": 1,
+        "d": 1,
+        "q": 1,
+        "aic": 445010.1169269737,
+        "bic": 445035.60985532537,
+        "log_likelihood": -222502.05846348684,
+        "converged": true
+      },
+      {
+        "order": "(2, 0, 1)",
+        "p": 2,
+        "d": 0,
+        "q": 1,
+        "aic": 445011.0743809617,
+        "bic": 445053.5627328864,
+        "log_likelihood": -222500.53719048086,
+        "converged": true
+      },
+      {
+        "order": "(0, 0, 1)",
+        "p": 0,
+        "d": 0,
+        "q": 1,
+        "aic": 445011.9168651833,
+        "bic": 445037.4098763381,
+        "log_likelihood": -222502.95843259164,
+        "converged": true
+      },
+      {
+        "order": "(1, 0, 0)",
+        "p": 1,
+        "d": 0,
+        "q": 0,
+        "aic": 445011.92383734556,
+        "bic": 445037.4168485004,
+        "log_likelihood": -222502.96191867278,
+        "converged": true
+      },
+      {
+        "order": "(1, 0, 1)",
+        "p": 1,
+        "d": 0,
+        "q": 1,
+        "aic": 445013.65698556544,
+        "bic": 445047.6476671052,
+        "log_likelihood": -222502.82849278272,
+        "converged": true
+      },
+      {
+        "order": "(1, 1, 0)",
+        "p": 1,
+        "d": 1,
+        "q": 0,
+        "aic": 460001.3500441352,
+        "bic": 460018.34532970295,
+        "log_likelihood": -229998.6750220676,
+        "converged": true
+      }
+    ],
+    "selected_order": [
+      0,
+      1,
+      1
+    ]
+  },
+  "forecast_evaluation_24h": {
+    "metrics": {
+      "MAE": 88.0663369957051,
+      "RMSE": 122.88525267924419,
+      "MAPE": 94.91703901342764,
+      "sMAPE": 74.24143426711223
+    },
+    "residual_diagnostics": {
+      "mean_residual": 6.457708007362702,
+      "std_residual": 122.71545678248252,
+      "ljung_box_stat": 7.589599151037179,
+      "ljung_box_pvalue": 0.6688542089961708,
+      "is_white_noise": true,
+      "jarque_bera_stat": 16.620256828001654,
+      "jarque_bera_pvalue": 0.0002460124498906764
+    }
+  },
+  "rolling_7_days_evaluation": [
+    {
+      "Day": 1,
+      "Date_Range": "2023-12-19 to 2023-12-20",
+      "MAE": 88.07,
+      "RMSE": 122.89,
+      "sMAPE": 74.24,
+      "Actual_Mean_RTT": 108.0,
+      "Actual_Max_RTT": 433.0
+    },
+    {
+      "Day": 2,
+      "Date_Range": "2023-12-20 to 2023-12-21",
+      "MAE": 73.32,
+      "RMSE": 88.79,
+      "sMAPE": 72.34,
+      "Actual_Mean_RTT": 88.96,
+      "Actual_Max_RTT": 312.0
+    },
+    {
+      "Day": 3,
+      "Date_Range": "2023-12-21 to 2023-12-22",
+      "MAE": 76.36,
+      "RMSE": 105.62,
+      "sMAPE": 71.25,
+      "Actual_Mean_RTT": 92.0,
+      "Actual_Max_RTT": 435.0
+    },
+    {
+      "Day": 4,
+      "Date_Range": "2023-12-22 to 2023-12-23",
+      "MAE": 51.54,
+      "RMSE": 51.54,
+      "sMAPE": 68.02,
+      "Actual_Mean_RTT": 50.0,
+      "Actual_Max_RTT": 50.0
+    },
+    {
+      "Day": 5,
+      "Date_Range": "2023-12-23 to 2023-12-24",
+      "MAE": 95.1,
+      "RMSE": 134.99,
+      "sMAPE": 72.39,
+      "Actual_Mean_RTT": 127.92,
+      "Actual_Max_RTT": 443.0
+    },
+    {
+      "Day": 6,
+      "Date_Range": "2023-12-24 to 2023-12-25",
+      "MAE": 51.24,
+      "RMSE": 52.57,
+      "sMAPE": 64.06,
+      "Actual_Mean_RTT": 62.58,
+      "Actual_Max_RTT": 197.0
+    },
+    {
+      "Day": 7,
+      "Date_Range": "2023-12-25 to 2023-12-26",
+      "MAE": 87.11,
+      "RMSE": 127.39,
+      "sMAPE": 74.33,
+      "Actual_Mean_RTT": 102.75,
+      "Actual_Max_RTT": 469.0
+    }
+  ],
+  "artifact_paths": {
+    "stationarity_plot": "C:\\Users\\lenovo\\Downloads\\NetworkPulse\\artifacts\\stationarity_analysis.png",
+    "train_acf_pacf_plot": "C:\\Users\\lenovo\\Downloads\\NetworkPulse\\artifacts\\train_acf_pacf.png",
+    "actual_vs_pred_plot": "C:\\Users\\lenovo\\Downloads\\NetworkPulse\\artifacts\\arima_24h_actual_vs_pred.png",
+    "residual_plot": "C:\\Users\\lenovo\\Downloads\\NetworkPulse\\artifacts\\arima_24h_residual_diagnostics.png"
+  }
+}

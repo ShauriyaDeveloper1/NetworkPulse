@@ -1,0 +1,7 @@
+rank,candidate_id,model_family,architecture,validation_pooled_mae_ms,validation_pooled_rmse_ms,test_pooled_mae_ms,test_pooled_rmse_ms,unique_predictions,forecast_type,verdict
+1,EXP-01_AutoTS_BasicLinearModel,AutoTS,BasicLinearModel + QuantileTransformer(20) + Cointegration,50.5655,122.6812,47.1146,119.9034,1,Constant Nominal Median (50 ms),CHAMPION BENCHMARK (Empirical Bayes Optimum)
+2,EXP-02_Direct_MultiHorizon_HuberL1,DirectRegression,24 Direct Huber L1 Regressors with lag & rolling volatility features,50.5655,122.6811,47.1146,119.9034,1,Converged to Nominal Median (50 ms),Tied with Champion; no extra gain
+3,EXP-05_Direct_Calibrated_FloorSnapping,Calibrated_Direct,Direct Huber L1 + Floor Snapping (threshold <= 51.0 ms),50.5655,122.6812,47.1146,119.9034,1,Snapped to Floor (50 ms),Tied with Champion; no extra gain
+4,EXP-04_AutoTS_Ensemble_Simple,AutoTS_Ensemble,"Simple multi-model ensemble (ETS, GLS, GLM, Naive)",50.5655,122.6812,47.1146,119.9034,1,Collapsed to Floor (50 ms),Tied with Champion; heavy compute (873s)
+5,EXP-03_AutoTS_Motifs,AutoTS_Motifs,UnivariateMotif / MetricMotif pattern template matching,50.8659,122.8506,47.452,120.1245,48,Varying pattern forecasts,Inferior; false-positive spike predictions
+6,"EXP-00_Log-ARIMA(1,0,0)",ARIMA,"Log-ARIMA(1,0,0) with naive exponential median inversion",63.4169,115.4326,59.9492,113.4361,254,Varying autoregressive forecasts (~70.5 ms),REFERENCE BASELINE (+12.83 ms worse MAE)

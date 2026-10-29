@@ -1,0 +1,78 @@
+{
+  "validation_period": "2023-11-21 14:00:00 to 2023-12-19 14:00:00",
+  "total_validation_windows": 28,
+  "total_validation_hours": 672,
+  "winning_candidate_id": "EXP-01_AutoTS_BasicLinearModel",
+  "winning_candidate_config": "BasicLinearModel + QuantileTransformer(20) + CointegrationTransformer",
+  "validation_benchmark_mae_ms": 50.56547619047619,
+  "winning_validation_mae_ms": 50.5655,
+  "validation_mae_delta_ms": 0.0,
+  "candidates": [
+    {
+      "candidate_id": "EXP-00_Log-ARIMA(1,0,0)",
+      "model_family": "ARIMA",
+      "configuration": "Log-ARIMA(1,0,0) with naive exponential median inversion",
+      "validation_pooled_mae_ms": 63.4169,
+      "validation_pooled_rmse_ms": 115.4326,
+      "validation_macro_mae_ms": 63.4169,
+      "validation_macro_std_ms": 17.8528,
+      "runtime_seconds": 1.58,
+      "status": "REFERENCE_BASELINE"
+    },
+    {
+      "candidate_id": "EXP-01_AutoTS_BasicLinearModel",
+      "model_family": "AutoTS",
+      "configuration": "BasicLinearModel + QuantileTransformer(20) + CointegrationTransformer",
+      "validation_pooled_mae_ms": 50.5655,
+      "validation_pooled_rmse_ms": 122.6812,
+      "validation_macro_mae_ms": 50.5655,
+      "validation_macro_std_ms": 20.9061,
+      "runtime_seconds": 176.05,
+      "status": "CURRENT_AUTOTS_CHAMPION_BENCHMARK"
+    },
+    {
+      "candidate_id": "EXP-02_Direct_MultiHorizon_HuberL1",
+      "model_family": "DirectRegression",
+      "configuration": "Direct 24-step Huber L1 Regressors with lag-based and rolling volatility features",
+      "validation_pooled_mae_ms": 50.5655,
+      "validation_pooled_rmse_ms": 122.6811,
+      "validation_macro_mae_ms": 50.5655,
+      "validation_macro_std_ms": 20.9061,
+      "runtime_seconds": 1.31,
+      "status": "VALIDATED_CANDIDATE"
+    },
+    {
+      "candidate_id": "EXP-03_AutoTS_Motifs",
+      "model_family": "AutoTS_Motifs",
+      "configuration": "UnivariateMotif with motif template matching",
+      "validation_pooled_mae_ms": 50.8659,
+      "validation_pooled_rmse_ms": 122.8506,
+      "validation_macro_mae_ms": 50.8659,
+      "validation_macro_std_ms": 21.21,
+      "runtime_seconds": 326.94,
+      "status": "VALIDATED_CANDIDATE"
+    },
+    {
+      "candidate_id": "EXP-04_AutoTS_Ensemble_Simple",
+      "model_family": "AutoTS_Ensemble",
+      "configuration": "Simple Ensemble: Ensemble",
+      "validation_pooled_mae_ms": 50.5655,
+      "validation_pooled_rmse_ms": 122.6812,
+      "validation_macro_mae_ms": 50.5655,
+      "validation_macro_std_ms": 20.9061,
+      "runtime_seconds": 872.99,
+      "status": "VALIDATED_CANDIDATE"
+    },
+    {
+      "candidate_id": "EXP-05_Direct_Calibrated_FloorSnapping",
+      "model_family": "Calibrated_Direct",
+      "configuration": "Direct Huber L1 + Floor Snapping (threshold <= 51.0 ms -> 50.0 ms)",
+      "validation_pooled_mae_ms": 50.5655,
+      "validation_pooled_rmse_ms": 122.6812,
+      "validation_macro_mae_ms": 50.5655,
+      "validation_macro_std_ms": 20.9061,
+      "runtime_seconds": 1.95,
+      "status": "VALIDATED_CANDIDATE"
+    }
+  ]
+}

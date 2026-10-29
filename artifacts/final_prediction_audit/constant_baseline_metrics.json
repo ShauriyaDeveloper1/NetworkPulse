@@ -1,0 +1,54 @@
+{
+  "diagnostic_benchmark_definition": "Constant point predictor emitting 50.0 ms (nominal hardware floor and unconditional median) for every hourly forecast step.",
+  "validation_benchmark_672h": {
+    "constant_50ms": {
+      "MAE_ms": 50.5655,
+      "RMSE_ms": 122.6812,
+      "sMAPE_pct": 27.73
+    },
+    "autots_basic_linear_model": {
+      "MAE_ms": 50.5655,
+      "RMSE_ms": 122.6812,
+      "sMAPE_pct": 27.73
+    },
+    "log_arima_100": {
+      "MAE_ms": 63.4169,
+      "RMSE_ms": 115.4326,
+      "sMAPE_pct": 51.77
+    },
+    "autots_vs_constant_50ms_delta_ms": 0.0
+  },
+  "untouched_test_benchmark_672h": {
+    "constant_50ms": {
+      "MAE_ms": 47.1146,
+      "RMSE_ms": 119.9034,
+      "sMAPE_pct": 25.28
+    },
+    "autots_basic_linear_model": {
+      "MAE_ms": 47.1146,
+      "RMSE_ms": 119.9034,
+      "sMAPE_pct": 25.28
+    },
+    "log_arima_100": {
+      "MAE_ms": 59.9492,
+      "RMSE_ms": 113.4361,
+      "sMAPE_pct": 49.16
+    },
+    "autots_vs_constant_50ms_delta_ms": 0.0
+  },
+  "primary_24h_test_window": {
+    "constant_50ms": {
+      "MAE_ms": 58.0,
+      "RMSE_ms": 135.7317
+    },
+    "autots_basic_linear_model": {
+      "MAE_ms": 58.0,
+      "RMSE_ms": 135.7317
+    },
+    "log_arima_100": {
+      "MAE_ms": 70.7331,
+      "RMSE_ms": 127.9507
+    }
+  },
+  "diagnostic_verdict": "AutoTS BasicLinearModel predictions are numerically identical to Constant 50.0 ms (MAE delta = 0.000000 ms). AutoTS learned to collapse predictions to the unconditional median floor through its QuantileTransformer. It does not provide dynamic time-varying forecasting beyond the nominal 50 ms floor."
+}

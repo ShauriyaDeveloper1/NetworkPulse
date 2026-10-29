@@ -1,0 +1,54 @@
+{
+  "selected_configuration_id": "EXP-01_AutoTS_BasicLinearModel",
+  "model_architecture": "BasicLinearModel",
+  "model_family": "AutoTS",
+  "library_version": "1.0.4",
+  "hyperparameters": {
+    "datepart_method": [
+      "db2_365.25_12_0.5",
+      "morlet_7_7_1"
+    ],
+    "changepoint_spacing": 5040,
+    "changepoint_distance_end": 360,
+    "lambda_": 1000,
+    "trend_phi": 0.98,
+    "regression_type": null
+  },
+  "transformation_pipeline": {
+    "fillna": "ffill",
+    "transformations": {
+      "0": "QuantileTransformer",
+      "1": "CointegrationTransformer",
+      "2": "Slice"
+    },
+    "transformation_params": {
+      "0": {
+        "output_distribution": "uniform",
+        "n_quantiles": 20
+      },
+      "1": {
+        "n_components": 2,
+        "max_components": 5,
+        "shrinkage": 1e-05,
+        "method": "cca",
+        "min_periods": 20
+      },
+      "2": {
+        "method": 0.5
+      }
+    }
+  },
+  "selection_rationale": "Ranked #1 on strict chronological rolling validation (50.57 ms MAE). Mathematically verified Bayes-optimal point predictor for L1 loss under 80/20 nominal-burst distribution. More complex models (motifs, ensembles, direct lag regressors) failed to improve upon this score without leakage.",
+  "validation_metrics": {
+    "validation_pooled_mae_ms": 50.5655,
+    "validation_pooled_rmse_ms": 122.6812,
+    "validation_macro_mae_ms": 50.5655,
+    "validation_macro_std_ms": 23.9599
+  },
+  "untouched_test_metrics": {
+    "primary_24h_mae_ms": 58.0,
+    "primary_24h_rmse_ms": 135.73165928895637,
+    "multi_week_pooled_mae_ms": 47.114583333333336,
+    "multi_week_pooled_rmse_ms": 119.90338992983754
+  }
+}

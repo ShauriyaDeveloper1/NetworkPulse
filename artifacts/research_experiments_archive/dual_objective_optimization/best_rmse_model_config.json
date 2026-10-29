@@ -1,0 +1,13 @@
+{
+  "model_type": "XGBoost Squared Error Regressor",
+  "objective": "reg:squarederror",
+  "max_depth": 4,
+  "learning_rate": 0.03,
+  "n_estimators": 300,
+  "reg_alpha": 0.0,
+  "reg_lambda": 1.0,
+  "validation_rmse_ms": 104.85841426974135,
+  "validation_mse_ms": 11532.491099933408,
+  "validation_mae_ms": 76.1802910486857,
+  "theoretical_justification": "Predicts conditional mean (~100 ms), minimizing squared penalties on rare high-amplitude spikes."
+}

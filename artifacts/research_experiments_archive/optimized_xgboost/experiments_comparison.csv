@@ -1,0 +1,9 @@
+Experiment,Objective,max_depth,learning_rate,n_estimators,reg_alpha,reg_lambda,Validation_MAE,Validation_RMSE,Validation_sMAPE
+Config_1,reg:absoluteerror,3,0.03,300,1.0,1.0,57.0754,125.2755,36.69
+Config_4,reg:absoluteerror,4,0.03,300,5.0,2.0,57.1989,125.2188,36.92
+Config_2,reg:absoluteerror,4,0.03,300,0.5,1.0,57.2503,125.1813,37.0
+Config_3,reg:absoluteerror,4,0.05,300,1.0,1.0,57.336,125.1127,37.12
+Config_5,reg:absoluteerror,5,0.02,400,1.0,1.0,57.4574,125.0399,37.39
+Config_6,reg:absoluteerror,5,0.03,300,1.0,1.0,57.4869,125.0498,37.42
+Config_7,reg:absoluteerror,5,0.05,300,2.0,2.0,57.5562,124.9669,37.55
+Config_8,reg:absoluteerror,6,0.03,300,1.0,1.0,57.7797,124.8877,37.93

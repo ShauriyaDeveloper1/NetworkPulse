@@ -1,0 +1,14 @@
+{
+  "model_type": "XGBoost Regressor (Quantile Q48 / L1 Loss)",
+  "objective": "reg:quantileerror (alpha=0.48)",
+  "max_depth": 3,
+  "learning_rate": 0.03,
+  "n_estimators": 300,
+  "reg_alpha": 1.0,
+  "reg_lambda": 1.0,
+  "subsample": 0.8,
+  "colsample_bytree": 0.8,
+  "strategy": "Recursive 24-step forecasting with dynamic lag and rolling statistic updates",
+  "primary_24h_mae_ms": 58.06887181599935,
+  "multi_week_macro_mae_ms": 47.86949148064567
+}

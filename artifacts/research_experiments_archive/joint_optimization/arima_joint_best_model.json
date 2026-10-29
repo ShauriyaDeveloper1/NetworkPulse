@@ -1,0 +1,23 @@
+{
+  "model_type": "ARIMA",
+  "order": [1, 0, 0],
+  "transformation": "log",
+  "differencing_justification": "ADF unit-root test p-value < 0.0001 proves training RTT series is strongly stationary in levels; differencing d=1 is unneeded over-differencing. Autoregressive AR(1) captures short-term persistence without artificial integration.",
+  "objective_alignment": "Log-transformation ln(RTT) maps the L2/Gaussian error minimization under exponentiation to the conditional geometric mean/median (~50 ms), eliminating the severe ~50 ms baseline penalty incurred by fitting in levels.",
+  "validation_metrics": {
+    "val_mae_mean_ms": 55.83,
+    "val_rmse_mean_ms": 104.59,
+    "val_smape_mean_pct": 39.42
+  },
+  "test_metrics_24h": {
+    "test_mae_ms": 69.82,
+    "test_rmse_ms": 128.39,
+    "test_smape_pct": 52.21,
+    "test_mape_pct": 47.70
+  },
+  "test_metrics_7day_rolling_mean": {
+    "test_mae_ms": 54.50,
+    "mae_reduction_vs_arima_011_ms": -19.76,
+    "relative_mae_reduction_pct": 26.6
+  }
+}

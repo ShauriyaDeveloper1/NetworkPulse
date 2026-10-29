@@ -1,0 +1,31 @@
+{
+  "model_name": "Log-ARIMA(1,0,0)",
+  "model_family": "ARIMA",
+  "order": [
+    1,
+    0,
+    0
+  ],
+  "seasonal_order": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "transformation": "log",
+  "inversion_strategy": "naive_exp_targeting_conditional_geometric_median",
+  "differencing_order_d": 0,
+  "stationarity_verified": true,
+  "clip_bounds": [
+    50.0,
+    500.0
+  ],
+  "validation_selection_metric": "Chronological Validation MAE",
+  "validation_mae_ms": 63.85,
+  "validation_rmse_ms": 121.76,
+  "validation_smape_pct": 50.62,
+  "mathematical_properties": {
+    "loss_function_alignment": "Log-transformation compresses heavy-tailed degradation spikes; naive exponential inversion preserves the conditional geometric median (50 ms), the Bayes-optimal point predictor for L1 MAE loss.",
+    "jensen_inequality_proof": "Applying Jensen's inequality correction factor exp(z + 0.5*sigma^2) shifts the prediction to the conditional mean (~100 ms), inflating MAE by >18 ms."
+  }
+}

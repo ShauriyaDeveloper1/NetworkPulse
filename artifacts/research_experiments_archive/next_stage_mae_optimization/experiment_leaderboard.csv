@@ -1,0 +1,7 @@
+candidate_id,model_family,configuration,validation_pooled_mae_ms,validation_pooled_rmse_ms,validation_macro_mae_ms,validation_macro_std_ms,runtime_seconds,status,rank
+EXP-01_AutoTS_BasicLinearModel,AutoTS,BasicLinearModel + QuantileTransformer(20) + CointegrationTransformer,50.5655,122.6812,50.5655,20.9061,176.05,CURRENT_AUTOTS_CHAMPION_BENCHMARK,1
+EXP-02_Direct_MultiHorizon_HuberL1,DirectRegression,Direct 24-step Huber L1 Regressors with lag-based and rolling volatility features,50.5655,122.6811,50.5655,20.9061,1.31,VALIDATED_CANDIDATE,2
+EXP-05_Direct_Calibrated_FloorSnapping,Calibrated_Direct,Direct Huber L1 + Floor Snapping (threshold <= 51.0 ms -> 50.0 ms),50.5655,122.6812,50.5655,20.9061,1.95,VALIDATED_CANDIDATE,3
+EXP-04_AutoTS_Ensemble_Simple,AutoTS_Ensemble,Simple Ensemble: Ensemble,50.5655,122.6812,50.5655,20.9061,872.99,VALIDATED_CANDIDATE,4
+EXP-03_AutoTS_Motifs,AutoTS_Motifs,UnivariateMotif with motif template matching,50.8659,122.8506,50.8659,21.21,326.94,VALIDATED_CANDIDATE,5
+"EXP-00_Log-ARIMA(1,0,0)",ARIMA,"Log-ARIMA(1,0,0) with naive exponential median inversion",63.4169,115.4326,63.4169,17.8528,1.58,REFERENCE_BASELINE,6

@@ -1,0 +1,47 @@
+{
+  "audit_timestamp": "2026-10-15T18:40:00Z",
+  "dataset_validation": {
+    "total_observations": 45289,
+    "train_observations": 36231,
+    "test_observations": 9058,
+    "min_rtt_ms": 50.0,
+    "median_rtt_ms": 50.0,
+    "mean_rtt_ms": 100.02128552187065,
+    "fraction_nominal_50ms": 0.8000176643335026
+  },
+  "reproduced_test_metrics": {
+    "evaluation_hours": 672,
+    "windows_count": 28,
+    "baseline_log_arima_100": {
+      "pooled_mae_ms": 59.9492,
+      "pooled_rmse_ms": 113.4361,
+      "sMAPE_pct": 49.16,
+      "unique_predictions_count": 254,
+      "min_prediction_ms": 68.55,
+      "max_prediction_ms": 72.38,
+      "std_prediction_ms": 0.8301
+    },
+    "autots_basic_linear_model": {
+      "pooled_mae_ms": 47.1146,
+      "pooled_rmse_ms": 119.9034,
+      "sMAPE_pct": 25.28,
+      "unique_predictions_count": 1,
+      "min_prediction_ms": 50.0,
+      "max_prediction_ms": 50.0,
+      "std_prediction_ms": 0.0
+    },
+    "constant_50ms_diagnostic": {
+      "pooled_mae_ms": 47.1146,
+      "pooled_rmse_ms": 119.9034,
+      "sMAPE_pct": 25.28
+    }
+  },
+  "reproducibility_verdict": {
+    "reported_47_11_ms_mae_reproducible": true,
+    "exact_reproduced_mae_ms": 47.1146,
+    "reported_59_95_ms_arima_reproducible": true,
+    "exact_reproduced_arima_mae_ms": 59.9492,
+    "timestamp_alignment_verified": true,
+    "zero_lookahead_leakage_verified": true
+  }
+}

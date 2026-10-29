@@ -1,0 +1,188 @@
+{
+  "autots_version": "1.0.4",
+  "dataset_metadata": {
+    "total_observations": 45289,
+    "train_observations": 36231,
+    "test_observations": 9058,
+    "target_column": "round_trip_time",
+    "floor_nominal_ms": 50.0,
+    "calm_sample_ratio": 0.8
+  },
+  "models": {
+    "baseline": {
+      "name": "Log-ARIMA(1,0,0)",
+      "family": "ARIMA",
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "inversion": "naive_exponential_conditional_median",
+      "validation_mae_ms": 55.82846,
+      "primary_24h_mae_ms": 70.73306968784728,
+      "primary_24h_rmse_ms": 127.95069355005705,
+      "multi_week_pooled_mae_ms": 59.94916069961141,
+      "multi_week_pooled_rmse_ms": 113.43609491859095,
+      "multi_week_macro_mae_ms": 59.949160699611426,
+      "multi_week_macro_std_ms": 20.328119178169537,
+      "training_time_sec": 0.04208803176879883,
+      "inference_time_per_24h_sec": 0.04438254662922451
+    },
+    "autots_advanced": {
+      "name": "BasicLinearModel",
+      "family": "AutoTS",
+      "model_parameters": {
+        "datepart_method": [
+          "db2_365.25_12_0.5",
+          "morlet_7_7_1"
+        ],
+        "changepoint_spacing": 5040,
+        "changepoint_distance_end": 360,
+        "regression_type": null,
+        "lambda_": 1000,
+        "trend_phi": 0.98,
+        "holiday_countries_used": false
+      },
+      "transformation_parameters": {
+        "fillna": "ffill",
+        "transformations": {
+          "0": "QuantileTransformer",
+          "1": "CointegrationTransformer",
+          "2": "Slice"
+        },
+        "transformation_params": {
+          "0": {
+            "output_distribution": "uniform",
+            "n_quantiles": 20
+          },
+          "1": {
+            "n_components": 2,
+            "max_components": 5,
+            "shrinkage": 1e-05,
+            "method": "cca",
+            "min_periods": 20
+          },
+          "2": {
+            "method": 0.5
+          }
+        }
+      },
+      "validation_mae_ms": 36.138888888888886,
+      "validation_rmse_ms": 93.20726377598902,
+      "primary_24h_mae_ms": 58.0,
+      "primary_24h_rmse_ms": 135.73165928895637,
+      "multi_week_pooled_mae_ms": 47.114583333333336,
+      "multi_week_pooled_rmse_ms": 119.90338992983754,
+      "multi_week_macro_mae_ms": 47.114583333333336,
+      "multi_week_macro_std_ms": 23.800246099772206,
+      "training_time_sec": 176.04950380325317,
+      "inference_time_per_24h_sec": 0.7556079285485404
+    }
+  },
+  "comparison": {
+    "primary_24h_mae_delta_ms": -12.733069687847276,
+    "pooled_mae_delta_ms": -12.834577366278076,
+    "pooled_mae_percentage_improvement": 21.409102673828208,
+    "windows_won_by_autots": 28,
+    "total_windows_evaluated": 28,
+    "autots_outperformed_baseline_overall": true
+  },
+  "step_mae_by_horizon": {
+    "h_01": {
+      "log_arima_mae_ms": 84.10448688685275,
+      "autots_mae_ms": 72.14285714285714
+    },
+    "h_02": {
+      "log_arima_mae_ms": 35.60606301024075,
+      "autots_mae_ms": 18.035714285714285
+    },
+    "h_03": {
+      "log_arima_mae_ms": 45.92574197935737,
+      "autots_mae_ms": 34.17857142857143
+    },
+    "h_04": {
+      "log_arima_mae_ms": 62.359247847628744,
+      "autots_mae_ms": 51.92857142857143
+    },
+    "h_05": {
+      "log_arima_mae_ms": 52.053427961606424,
+      "autots_mae_ms": 39.07142857142857
+    },
+    "h_06": {
+      "log_arima_mae_ms": 70.42790316296963,
+      "autots_mae_ms": 55.5
+    },
+    "h_07": {
+      "log_arima_mae_ms": 68.70999841086328,
+      "autots_mae_ms": 60.0
+    },
+    "h_08": {
+      "log_arima_mae_ms": 73.12558099225807,
+      "autots_mae_ms": 64.25
+    },
+    "h_09": {
+      "log_arima_mae_ms": 62.51806516792889,
+      "autots_mae_ms": 52.32142857142857
+    },
+    "h_10": {
+      "log_arima_mae_ms": 38.030804872606794,
+      "autots_mae_ms": 22.035714285714285
+    },
+    "h_11": {
+      "log_arima_mae_ms": 41.02076342638929,
+      "autots_mae_ms": 23.535714285714285
+    },
+    "h_12": {
+      "log_arima_mae_ms": 82.54065198862634,
+      "autots_mae_ms": 75.10714285714286
+    },
+    "h_13": {
+      "log_arima_mae_ms": 61.62502305934493,
+      "autots_mae_ms": 49.714285714285715
+    },
+    "h_14": {
+      "log_arima_mae_ms": 32.49648528396978,
+      "autots_mae_ms": 17.785714285714285
+    },
+    "h_15": {
+      "log_arima_mae_ms": 70.48367156730448,
+      "autots_mae_ms": 58.964285714285715
+    },
+    "h_16": {
+      "log_arima_mae_ms": 84.1105770255756,
+      "autots_mae_ms": 78.21428571428571
+    },
+    "h_17": {
+      "log_arima_mae_ms": 42.38222775227615,
+      "autots_mae_ms": 26.357142857142858
+    },
+    "h_18": {
+      "log_arima_mae_ms": 82.10899551791431,
+      "autots_mae_ms": 70.21428571428571
+    },
+    "h_19": {
+      "log_arima_mae_ms": 40.3037933250639,
+      "autots_mae_ms": 24.392857142857142
+    },
+    "h_20": {
+      "log_arima_mae_ms": 76.3255225706682,
+      "autots_mae_ms": 63.0
+    },
+    "h_21": {
+      "log_arima_mae_ms": 69.15226902837689,
+      "autots_mae_ms": 55.964285714285715
+    },
+    "h_22": {
+      "log_arima_mae_ms": 28.273970237944734,
+      "autots_mae_ms": 9.142857142857142
+    },
+    "h_23": {
+      "log_arima_mae_ms": 93.32372604606326,
+      "autots_mae_ms": 83.21428571428571
+    },
+    "h_24": {
+      "log_arima_mae_ms": 41.770859668843556,
+      "autots_mae_ms": 25.678571428571427
+    }
+  }
+}

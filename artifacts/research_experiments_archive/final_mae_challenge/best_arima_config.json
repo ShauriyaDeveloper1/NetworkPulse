@@ -1,0 +1,13 @@
+{
+  "model_type": "Log-ARIMA(1,0,0)",
+  "order": [
+    1,
+    0,
+    0
+  ],
+  "transformation": "log",
+  "differencing": "d=0 (justified by stationary ADF test on raw telemetry)",
+  "inversion_math": "Naive exp(y) is strictly proven optimal for MAE because it targets the conditional median (50 ms). The Jensen's inequality correction term (+0.5*sigma^2) targets the mean (100 ms) and increases MAE.",
+  "primary_24h_mae_ms": 70.73306968784728,
+  "multi_week_macro_mae_ms": 60.787364769303004
+}

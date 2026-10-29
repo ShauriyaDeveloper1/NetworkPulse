@@ -1,0 +1,19 @@
+model_id,model_name,order,seasonal_order,transform,inversion,aic,bic,val_mae_ms,val_rmse_ms,val_smape_pct,convergence,rank
+Log_ARIMA_201_exp,"Log-ARIMA(2,0,1) [Log ARMA21]","(2, 0, 1)","(0, 0, 0, 0)",log,naive_exp,10625.94,10658.52,63.85,121.76,50.62,CONVERGED,1
+Log_ARIMA_100_exp,"Log-ARIMA(1,0,0) [Active Model A]","(1, 0, 0)","(0, 0, 0, 0)",log,naive_exp,10621.99,10641.55,63.86,121.69,50.66,CONVERGED,2
+Log_ARIMA_001_exp,"Log-ARIMA(0,0,1) [Log MA1]","(0, 0, 1)","(0, 0, 0, 0)",log,naive_exp,10621.99,10641.55,63.86,121.69,50.66,CONVERGED,3
+Log_ARIMA_200_exp,"Log-ARIMA(2,0,0) [Log AR2]","(2, 0, 0)","(0, 0, 0, 0)",log,naive_exp,10623.94,10650.0,63.86,121.69,50.66,CONVERGED,4
+SARIMA_100_24_log,"Log-SARIMA(1,0,0)x(1,0,0,24) [Log Seasonal]","(1, 0, 0)","(1, 0, 0, 24)",log,naive_exp,10621.6,10647.67,63.86,121.77,50.63,CONVERGED,5
+Log_ARIMA_101_exp,"Log-ARIMA(1,0,1) [Log ARMA11]","(1, 0, 1)","(0, 0, 0, 0)",log,naive_exp,10623.99,10650.06,63.87,121.77,50.65,CONVERGED,6
+Log_ARIMA_000_exp,"Log-ARIMA(0,0,0) [Geometric Median]","(0, 0, 0)","(0, 0, 0, 0)",log,naive_exp,10620.0,10633.04,63.88,121.69,50.68,CONVERGED,7
+Log_ARIMA_011_exp,"Log-ARIMA(0,1,1) [Log Differenced]","(0, 1, 1)","(0, 0, 0, 0)",log,naive_exp,10626.8,10639.83,63.91,121.69,50.73,CONVERGED,8
+ARIMA_111_raw,"ARIMA(1,1,1) [Raw Differenced]","(1, 1, 1)","(0, 0, 0, 0)",raw,identity,61212.56,61232.11,84.04,118.42,73.98,CONVERGED,9
+ARIMA_011_raw,"ARIMA(0,1,1) [Stage 1 Baseline]","(0, 1, 1)","(0, 0, 0, 0)",raw,identity,61211.09,61224.13,84.08,118.43,74.01,CONVERGED,10
+ARIMA_201_raw,"ARIMA(2,0,1) [Raw ARMA21]","(2, 0, 1)","(0, 0, 0, 0)",raw,identity,61218.77,61251.35,84.12,118.51,74.04,CONVERGED,11
+ARIMA_100_raw,"ARIMA(1,0,0) [Raw AR1]","(1, 0, 0)","(0, 0, 0, 0)",raw,identity,61215.32,61234.87,84.13,118.4,74.06,CONVERGED,12
+ARIMA_001_raw,"ARIMA(0,0,1) [Raw MA1]","(0, 0, 1)","(0, 0, 0, 0)",raw,identity,61215.32,61234.87,84.13,118.39,74.06,CONVERGED,13
+ARIMA_200_raw,"ARIMA(2,0,0) [Raw AR2]","(2, 0, 0)","(0, 0, 0, 0)",raw,identity,61217.2,61243.27,84.14,118.4,74.06,CONVERGED,14
+ARIMA_101_raw,"ARIMA(1,0,1) [Raw ARMA11]","(1, 0, 1)","(0, 0, 0, 0)",raw,identity,61217.3,61243.37,84.15,118.54,74.06,CONVERGED,15
+ARIMA_000_raw,"ARIMA(0,0,0) [Raw Mean]","(0, 0, 0)","(0, 0, 0, 0)",raw,identity,61213.43,61226.46,84.17,118.41,74.09,CONVERGED,16
+SARIMA_100_24_raw,"SARIMA(1,0,0)x(1,0,0,24) [Raw Seasonal]","(1, 0, 0)","(1, 0, 0, 24)",raw,identity,61213.95,61240.01,84.18,118.54,74.07,CONVERGED,17
+Log_ARIMA_100_jensen,"Log-ARIMA(1,0,0) [Jensen Mean Correction]","(1, 0, 0)","(0, 0, 0, 0)",log,jensen_mean,10621.99,10641.55,93.96,119.75,81.96,CONVERGED,18

@@ -1,0 +1,26 @@
+{
+  "model_family": "ARIMA",
+  "model_name": "Log-ARIMA(1,0,0)",
+  "order": [
+    1,
+    0,
+    0
+  ],
+  "transformation": "log",
+  "differencing": "d=0",
+  "inversion_math": "Naive exp(y) strictly targets conditional median (50 ms)",
+  "validation_mae_ms": 55.8285,
+  "primary_24h_metrics": {
+    "MAE": 70.73306968784728,
+    "RMSE": 127.95069355005705,
+    "MAPE": 50.058022587326754,
+    "sMAPE": 53.61928618588328
+  },
+  "multi_week_benchmark_metrics": {
+    "micro_mae_ms": 59.94916069961141,
+    "micro_rmse_ms": 113.43609491859095,
+    "macro_mae_ms": 59.949160699611426,
+    "macro_std_ms": 20.328119178169537
+  },
+  "status": "ACTIVE_PRODUCTION_MODEL_A"
+}

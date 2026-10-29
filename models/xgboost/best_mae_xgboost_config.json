@@ -1,0 +1,21 @@
+{
+  "model_family": "XGBoost",
+  "model_name": "XGBoost Quantile (q=0.46)",
+  "objective": "reg:quantileerror",
+  "quantile_alpha": 0.46,
+  "feature_count": 82,
+  "validation_mae_ms": 47.4009,
+  "primary_24h_metrics": {
+    "MAE": 58.055388768514,
+    "RMSE": 135.68926830541312,
+    "MAPE": 17.269586646448325,
+    "sMAPE": 29.542903730371584
+  },
+  "multi_week_benchmark_metrics": {
+    "micro_mae_ms": 47.16293242431822,
+    "micro_rmse_ms": 119.87134758205416,
+    "macro_mae_ms": 47.16293242431822,
+    "macro_std_ms": 23.790004886762986
+  },
+  "status": "ACTIVE_PRODUCTION_MODEL_B"
+}
