@@ -241,7 +241,19 @@ Open your browser and navigate to:
 http://127.0.0.1:5000
 ```
 
-### 3. Run Anomaly Detection & Visualization Pipelines
+### 3. Deploy to Render (Cloud Production)
+
+This repository includes a [`render.yaml`](render.yaml) blueprint and [`Procfile`](Procfile) for zero-config production deployment:
+
+1. Log in to [Render Dashboard](https://dashboard.render.com/) and select **New +** ➔ **Web Service**.
+2. Connect your GitHub repository: `ShauriyaDeveloper1/NetworkPulse`.
+3. Configure the service settings (or auto-detect via `render.yaml`):
+   - **Runtime:** `Python 3`
+   - **Build Command:** `pip install --upgrade pip && pip install -r requirements.txt`
+   - **Start Command:** `gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120`
+4. Click **Create Web Service**. Render will provision and launch the dashboard with a live HTTPS URL.
+
+### 4. Run Anomaly Detection & Visualization Pipelines
 
 ```powershell
 # Train Isolation Forest & Generate Predictions
@@ -251,7 +263,7 @@ python train_isolation_forest.py
 python generate_visualizations.py
 ```
 
-### 4. Run Automated Test Suite
+### 5. Run Automated Test Suite
 
 Verify all 37 unit and integration tests across data loading, models, anomaly detection, and API routes:
 

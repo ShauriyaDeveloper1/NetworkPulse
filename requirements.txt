@@ -9,3 +9,4 @@ ipykernel>=6.0.0
 pmdarima>=2.0.0
 autots>=1.0.4
 flask>=3.0.0
+gunicorn>=21.0.0
