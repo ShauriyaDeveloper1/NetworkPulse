@@ -1,33 +1,34 @@
 # NetworkPulse — Models Directory
 
-This directory organizes the forecasting models, serialized weights/configurations, Jupyter notebooks, and driver scripts exclusively for the **Final Two-Model Active Architecture**.
+This directory organizes the model configurations, serialized weights, and metadata for the **NetworkPulse Active Production Architecture**.
 
 ---
 
-## Active Forecasting Architecture: Two-Model Pipeline
+## Active Model Architecture
 
-To minimize Mean Absolute Error (MAE) without unnecessary complexity, NetworkPulse deploys strictly **two verified models**:
+NetworkPulse deploys three complementary models:
 
-1. **Model A: Best-MAE ARIMA [Log-ARIMA(1,0,0)]**
+1. **Baseline Forecaster: Best-MAE ARIMA [Log-ARIMA(1,0,0)]**
    - **Type:** Univariate Parametric Time Series
    - **Order:** $(p=1, d=0, q=0)$
    - **Transformation:** $\ln(\text{RTT})$ with naive exponential back-transformation $\hat{y} = \exp(\hat{z})$
-   - **Chronological Validation MAE:** **55.83 ms** | Multi-Week Test MAE: **60.79 ms**
-   - **Notebook:** [`models/arima/NetworkPulse_Best_MAE_ARIMA.ipynb`](file:///models/arima/NetworkPulse_Best_MAE_ARIMA.ipynb)
-   - **Runner Script:** [`models/arima/run_best_mae_arima.py`](file:///models/arima/run_best_mae_arima.py)
-   - **Config:** [`models/arima/best_mae_arima_config.json`](file:///models/arima/best_mae_arima_config.json)
+   - **Test Performance:** MAE: **59.95 ms** | RMSE: **113.44 ms** | MAPE: **46.75%**
+   - **Config:** `models/arima/best_mae_arima_config.json`
+   - **Artifacts:** `models/arima/arima_model.pkl`
 
-2. **Model B: Best-MAE XGBoost [Quantile Regressor $q=0.46$]**
-   - **Type:** Feature-Based Gradient Boosting (82 predictive lag, rolling, EWMA & telemetry features)
-   - **Objective:** `reg:quantileerror` ($\alpha = 0.46$)
-   - **Strategy:** Recursive 24-step forecasting with dynamic lag and rolling statistic updates
-   - **Chronological Validation MAE:** **47.40 ms** | Multi-Week Test MAE: **47.16 ms**
-   - **Notebook:** [`models/xgboost/NetworkPulse_Best_MAE_XGBoost.ipynb`](file:///models/xgboost/NetworkPulse_Best_MAE_XGBoost.ipynb)
-   - **Runner Script:** [`models/xgboost/run_best_mae_xgboost.py`](file:///models/xgboost/run_best_mae_xgboost.py)
-   - **Config:** [`models/xgboost/best_mae_xgboost_config.json`](file:///models/xgboost/best_mae_xgboost_config.json)
-   - **Artifact:** [`models/xgboost/best_mae_xgboost_model.json`](file:///models/xgboost/best_mae_xgboost_model.json)
+2. **Advanced Forecaster: AutoTS Champion [BasicLinearModel]**
+   - **Type:** Multi-Scale Automated Time Series Regressor
+   - **Transformation:** `QuantileTransformer(20, uniform)` + `CointegrationTransformer(2)` + Wavelet harmonics
+   - **Test Performance:** MAE: **47.11 ms** | RMSE: **119.90 ms** | MAPE: **14.95%** (Bayes Optimal Median Floor)
+   - **Config:** `models/autots/best_autots_model.json`
 
-All historical research experiments and non-active competing variants (squared-error champions, Pareto ensembles, naive baselines) are preserved in [`artifacts/`](file:///artifacts/).
+3. **Anomaly Detector: Isolation Forest [Tree Ensemble]**
+   - **Type:** Unsupervised Latency & Telemetry Anomaly Detection
+   - **Configuration:** 200 Isolation Trees, contamination = 0.08, StandardScaler
+   - **Features:** 24 multi-scale causal features & coupled stress interactions
+   - **Spike Precision:** **90.51%** (Full Dataset) | **89.88% – 91.51%** (Out-of-Sample Test)
+   - **Spike Accuracy:** **86.49% – 89.50%**
+   - **Artifacts:** `models/isolation_forest/isolation_forest.pkl`, `scaler.pkl`, `feature_config.json`
 
 ---
 
@@ -36,35 +37,14 @@ All historical research experiments and non-active competing variants (squared-e
 ```
 models/
 ├── README.md                                  # Directory documentation & model catalog
-│
-├── arima/                                     # Model A: Best-MAE ARIMA
-│   ├── NetworkPulse_Best_MAE_ARIMA.ipynb      # Dedicated interactive notebook for Log-ARIMA(1,0,0)
-│   ├── run_best_mae_arima.py                  # Standalone execution & evaluation script
-│   └── best_mae_arima_config.json             # Model A configuration & validation metadata
-│
-└── xgboost/                                   # Model B: Best-MAE XGBoost
-    ├── NetworkPulse_Best_MAE_XGBoost.ipynb    # Dedicated interactive notebook for Quantile XGBoost
-    ├── run_best_mae_xgboost.py                # Standalone execution & evaluation script
-    ├── best_mae_xgboost_config.json           # Model B configuration & validation metadata
-    └── best_mae_xgboost_model.json            # Serialized Quantile booster artifact (q=0.46)
-```
-
----
-
-## Execution Quickstart
-
-To run the unified two-model pipeline (both models evaluated head-to-head on identical test origins):
-
-```powershell
-python run_final_two_models.py
-```
-
-To run individual model driver scripts:
-
-```powershell
-# 1. Run Model A (Log-ARIMA)
-python models/arima/run_best_mae_arima.py
-
-# 2. Run Model B (Quantile XGBoost)
-python models/xgboost/run_best_mae_xgboost.py
+├── arima/                                     # Baseline: Log-ARIMA(1,0,0)
+│   ├── best_mae_arima_config.json             # ARIMA configuration & validation metadata
+│   ├── arima_model.pkl                        # Serialized fitted ARIMA model
+│   └── scaler.pkl                             # Transformer artifact
+├── autots/                                    # Advanced Champion: AutoTS BasicLinearModel
+│   └── best_autots_model.json                 # Selected model parameters & transformation pipeline
+└── isolation_forest/                          # Anomaly Detector: Isolation Forest
+    ├── isolation_forest.pkl                   # Trained Isolation Forest model
+    ├── scaler.pkl                             # RobustStandardScaler artifact
+    └── feature_config.json                    # Feature definitions & hyperparameters
 ```

@@ -1,0 +1,52 @@
+{
+  "autots_version": "1.0.4",
+  "selected_model_name": "BasicLinearModel",
+  "model_id": "042b2fe87bf08edbadad34733f0353cf",
+  "model_parameters": {
+    "datepart_method": [
+      "db2_365.25_12_0.5",
+      "morlet_7_7_1"
+    ],
+    "changepoint_spacing": 5040,
+    "changepoint_distance_end": 360,
+    "regression_type": null,
+    "lambda_": 1000,
+    "trend_phi": 0.98,
+    "holiday_countries_used": false
+  },
+  "transformation_parameters": {
+    "fillna": "ffill",
+    "transformations": {
+      "0": "QuantileTransformer",
+      "1": "CointegrationTransformer",
+      "2": "Slice"
+    },
+    "transformation_params": {
+      "0": {
+        "output_distribution": "uniform",
+        "n_quantiles": 20
+      },
+      "1": {
+        "n_components": 2,
+        "max_components": 5,
+        "shrinkage": 1e-05,
+        "method": "cca",
+        "min_periods": 20
+      },
+      "2": {
+        "method": 0.5
+      }
+    }
+  },
+  "forecast_length": 24,
+  "frequency": "h",
+  "optimization_metric": "MAE (milliseconds)",
+  "validation_method": "backwards",
+  "num_validations": 2,
+  "validation_mae_ms": 36.138888888888886,
+  "validation_rmse_ms": 93.20726377598902,
+  "validation_smape": 21.90710305021599,
+  "training_time_seconds": 176.04950380325317,
+  "inference_time_per_24h_seconds": 0.7556079285485404,
+  "model_description": "AutoTS-selected BasicLinearModel model configured with tailored transformation pipeline to model RTT dynamics."
+}

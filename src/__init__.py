@@ -6,7 +6,7 @@ from src.forecasting_engine import (
     ForecastResult,
     BaseForecaster,
     BestMaeARIMAForecaster,
-    BestMaeXGBoostForecaster,
+    AutoTSForecaster,
     TwoModelForecastingPipeline
 )
 
@@ -14,6 +14,6 @@ __all__ = [
     "ForecastResult",
     "BaseForecaster",
     "BestMaeARIMAForecaster",
-    "BestMaeXGBoostForecaster",
+    "AutoTSForecaster",
     "TwoModelForecastingPipeline"
 ]

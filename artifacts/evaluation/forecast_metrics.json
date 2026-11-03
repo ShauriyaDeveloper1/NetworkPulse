@@ -1,0 +1,19 @@
+{
+  "evaluation_scope": "672 Out-of-Sample Test Hours across 28 Rolling 24-Hour Windows",
+  "models": {
+    "ARIMA": {
+      "name": "Log-ARIMA(1,0,0)",
+      "MAE": 59.95,
+      "RMSE": 113.44,
+      "MAPE": 46.75,
+      "sMAPE": 49.16
+    },
+    "AutoTS": {
+      "name": "AutoTS BasicLinearModel",
+      "MAE": 47.11,
+      "RMSE": 119.9,
+      "MAPE": 14.95,
+      "sMAPE": 25.28
+    }
+  }
+}

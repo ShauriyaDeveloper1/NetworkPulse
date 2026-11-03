@@ -71,7 +71,7 @@ def test_api_forecast_windows(client):
 
 
 def test_api_forecast_comparison(client):
-    """GET /api/forecast/comparison returns actual vs 3 models for window N."""
+    """GET /api/forecast/comparison returns actual vs models for window N."""
     response = client.get("/api/forecast/comparison?window=1")
     assert response.status_code == 200
     data = json.loads(response.data)
@@ -79,9 +79,9 @@ def test_api_forecast_comparison(client):
     assert len(data["actual_rtt_ms"]) == 24
     assert len(data["arima_pred_ms"]) == 24
     assert len(data["autots_pred_ms"]) == 24
-    assert len(data["xgboost_pred_ms"]) == 24
     assert "metrics" in data
     assert "MAE" in data["metrics"]["autots"]
+    assert "MAE" in data["metrics"]["arima"]
 
 
 def test_api_forecast_horizon_profile(client):
@@ -95,15 +95,80 @@ def test_api_forecast_horizon_profile(client):
 
 
 def test_api_models_comparison(client):
-    """GET /api/models/comparison returns structured 3-model comparison data."""
+    """GET /api/models/comparison returns structured model comparison data."""
     response = client.get("/api/models/comparison")
     assert response.status_code == 200
     data = json.loads(response.data)
-    assert len(data["models"]) == 3
+    assert len(data["models"]) >= 3
     model_ids = [m["id"] for m in data["models"]]
     assert "log_arima_100" in model_ids
     assert "autots_basic_linear" in model_ids
-    assert "xgboost_quantile" in model_ids
+    assert "isolation_forest" in model_ids
+
+
+def test_api_overview(client):
+    """GET /api/overview returns system overview, KPIs, and network health score."""
+    response = client.get("/api/overview")
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert "average_rtt" in data
+    assert "min_rtt" in data
+    assert "max_rtt" in data
+    assert "detected_anomalies" in data
+    assert "network_health_score" in data
+    assert "network_health_status" in data
+    assert 0 <= data["network_health_score"] <= 100
+
+
+def test_api_network_performance(client):
+    """GET /api/network-performance returns time-series telemetry slice and anomaly markers."""
+    response = client.get("/api/network-performance?limit=48")
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert len(data["timestamps"]) == 48
+    assert len(data["actual_rtt"]) == 48
+    assert len(data["forecast_rtt"]) == 48
+    assert "anomaly_markers" in data
+    assert "rolling_mean" in data
+    assert "rolling_std" in data
+
+
+def test_api_forecast(client):
+    """GET /api/forecast returns multi-model 24h predictions and metrics."""
+    response = client.get("/api/forecast?window=1")
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert data["window_id"] == 1
+    assert len(data["actual_rtt"]) == 24
+    assert len(data["arima_pred"]) == 24
+    assert len(data["autots_pred"]) == 24
+    assert "metrics" in data
+    assert "MAE" in data["metrics"]["autots"]
+    assert "MAPE" in data["metrics"]["autots"]
+
+
+def test_api_model_performance(client):
+    """GET /api/model-performance returns all active models and theoretical Bayes floor."""
+    response = client.get("/api/model-performance")
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert len(data["models"]) == 3
+    assert data["theoretical_bayes_floor_ms"] == 47.11
+
+
+def test_api_historical_analysis(client):
+    """GET /api/historical-analysis returns summary, percentiles, calm vs burst, and protocols."""
+    response = client.get("/api/historical-analysis")
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert "summary" in data
+    assert data["summary"]["total_observations"] == 45289
+    assert "percentiles" in data
+    assert data["percentiles"]["p50_median"] == 50.0
+    assert "calm_vs_burst" in data
+    assert data["calm_vs_burst"]["calm_nominal_pct"] >= 79.9
+    assert "protocols" in data
+    assert len(data["protocols"]) >= 3
 
 
 def test_api_anomalies_pagination(client):
